@@ -1,0 +1,105 @@
+<div>
+  <div class="data-container">
+    <div class="text-left text-light">
+      <div class="pt-5 pl-5">
+        <h2 class="title font-weight-bold">Stranger Things</h2>
+        <p class="font-weight-bold text-danger d-flex">
+          <mat-chip color="primary" selected class="mr-1">
+            <mat-icon>local_movies</mat-icon> <span>120min</span>
+          </mat-chip>
+          <mat-chip color="primary" selected>
+            <mat-icon class="text-warning">star</mat-icon> <span>8.5</span>
+          </mat-chip>
+        </p>
+        <br>
+        <p>Description</p>
+        <p class="w-75">{{movie?.description | slice:0:200}}...</p>
+        <div>
+          <button mat-raised-button color="primary" aria-label="Trailer" (click)="openDialog()">
+            <mat-icon class="icon-colored">play_arrow</mat-icon> Watch Trailer
+          </button>
+        </div>
+        <br>
+        <p>Categories</p>
+        <mat-chip-list>
+          <mat-chip color="primary" selected>Horror</mat-chip>
+          <mat-chip color="primary" selected>Drama</mat-chip>
+          <mat-chip color="primary" selected>Sci-fi</mat-chip>
+        </mat-chip-list>
+      </div>
+      <div class="tab-container mt-5">
+        <mat-tab-group mat-align-tabs="center" backgroundColor="primary" (selectedTabChange)="changeTab()">
+          <mat-tab label="Description">
+            <section class="top-billed-cast mt-2 p-3">
+              <p>{{movie?.description}}</p>
+              <ul class="list-unstyled" *ngIf="movie && movie['snippets']">
+                <li class="m-2" *ngFor="let snip of movie['snippets']">
+                    &rsaquo; {{snip}}
+                </li>
+              </ul>
+            </section>
+          </mat-tab>
+          <mat-tab label="Cast">
+            <section class="top-billed-cast mt-2">
+              <p class="title-billed">Creators</p>
+              <div class="ml-5" style="display: flex" *ngIf="movie && movie['creators']">
+                <div *ngFor="let creator of movie['creators']; let last = last"
+                  [ngStyle]="{'border-right': last !== true ? '1px solid #ffffff75' : ''}" >
+                  <div class="mr-1" style="display: inline-flex; align-items: center; padding: 0 5px;">
+                    <img mat-card-image src="https://loremflickr.com/320/240">
+                    <div>
+                      <small class="text-light">{{creator}}</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr>
+              <p class="title-billed">Lead Stars</p>
+              <div style="display: flex" *ngIf="movie && movie['lead-stars']">
+                <div *ngFor="let actor of movie['lead-stars']; let last = last"
+                  [ngStyle]="{'border-right': last !== true ? '1px solid #ffffff75' : ''}" >
+                  <div class="mr-1" style="display: inline-flex; align-items: center; padding: 0 5px;">
+                    <img mat-card-image src="https://loremflickr.com/320/240">
+                    <div>
+                      <small class="text-light">{{actor}}</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </mat-tab>
+          <mat-tab label="Gallery">
+            <div *ngIf="movie && movie['gallery'].length" class="swiper-container" [swiper]="config">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide w-200-px" *ngFor="let image of movie['gallery']">
+                  <app-movie-poster-card [data]="image"></app-movie-poster-card>
+                </div>
+              </div>
+
+              <div class="swiper-scrollbar"></div>
+              <div class="swiper-pagination"></div>
+
+              <div class="swiper-button-prev"></div>
+              <div class="swiper-button-next"></div>
+            </div>
+          </mat-tab>
+          <mat-tab label="Episodes">
+            <div *ngIf="movie && movie['episode-list'].length" class="swiper-container" [swiper]="config">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide w-200-px" *ngFor="let episode of movie['episode-list']">
+                  <app-movie-poster-card [data]="episode"></app-movie-poster-card>
+                </div>
+              </div>
+
+              <div class="swiper-scrollbar"></div>
+              <div class="swiper-pagination"></div>
+
+              <div class="swiper-button-prev"></div>
+              <div class="swiper-button-next"></div>
+            </div>
+          </mat-tab>
+        </mat-tab-group>
+      </div>
+    </div>
+  </div>
+</div>

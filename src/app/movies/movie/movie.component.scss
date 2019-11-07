@@ -1,0 +1,25 @@
+.data-container {
+  background: linear-gradient(to right, rgb(0, 0, 0) 30%, rgba(0, 0, 0, 0.06) 50%, transparent 20%), url(../../../assets/images/banner.jpg);
+  height: 50vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+.top-billed-cast .title-billed {
+  text-align: left; 
+  margin-left: 45px;
+  color:white;
+}
+.top-billed-cast img {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  margin: 0 8px 0 0;
+  object-fit: cover;
+}
+ ::ng-deep .swiper-pagination-bullet {
+    background: #d2d2d2 !important;
+  }
+  // .swiper-slide.w-200-px {
+  //   width: 270px !important;
+  // }

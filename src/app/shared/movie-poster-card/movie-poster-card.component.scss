@@ -1,0 +1,39 @@
+.poster-chip {
+    right: 5%;
+}
+.play-icon {
+    left: 42%;
+    font-size: 65px;
+    top: 42%;
+    color: #ffffffad;
+}
+.example-card:hover {
+    cursor: pointer;
+    .play-icon {
+        color: white;
+    }
+    .revealer {
+        display: block;
+        bottom: 10%;
+    }
+}
+
+.example-card {
+    max-width: 400px;
+}
+
+.example-header-image {
+    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-size: cover;
+}
+.w-15 {
+    width: 15%;
+}
+.revealer {
+    position: absolute;
+    /* top: 73%; */
+    bottom: 0%;
+    background: #000000ad;
+    display: none;
+    transition: bottom 1s;
+}

@@ -1,0 +1,17 @@
+<mat-card *ngIf="data; else nodata" class="example-card bg-dark" routerLink="/movie" (click)="openDialog(data)">
+    <img class="position-relative" mat-card-image [src]="data.src ? data.src : '../../assets/images/brand.jpg'" alt="Photo of a Shiba Inu">
+    <mat-chip class="position-absolute poster-chip">
+        <mat-icon class="text-warning">star</mat-icon> <span>{{data.rating}}</span> 
+    </mat-chip>
+    <mat-icon *ngIf="data?.isEpisode" class="icon-colored play-icon position-absolute">play_circle_filled</mat-icon>
+    <div class="revealer text-light" *ngIf="data.description">
+        <p>20 August, 2019</p>
+        <p>{{data?.description | slice:0:130}}...</p>
+    </div>
+    <mat-card-content>
+        <h5 class="text-light">{{data?.heading}}{{data?.name}}{{data?.text}}</h5>
+    </mat-card-content>
+</mat-card>
+<ng-template #nodata>
+    <h4 class="text-light">Sorry, No data found.</h4>
+</ng-template>

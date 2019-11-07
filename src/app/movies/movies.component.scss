@@ -1,0 +1,8 @@
+::ng-deep {
+ & .example-card {
+  max-width: 220px;
+}
+& .bg-dark {
+  background-color:rgb(0,0,0) !important;
+  }
+}
