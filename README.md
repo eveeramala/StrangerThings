@@ -1,5 +1,8 @@
 # Movie Rating Site- Stranger Things
 
+### Description
+Website to display content about a Netflix original Stranger Things. 
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.3.
 
 ## Development server
